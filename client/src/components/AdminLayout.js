@@ -64,7 +64,7 @@ const AdminPage = ({ children }) => {
 								12 5.4 12 12z"
                   ></path>
                 </svg>
-                <span className="ml-4 capitalize">my card</span>
+                <span className="ml-4 capitalize">Card</span>
               </span>
             </button>
           </li>
@@ -164,7 +164,7 @@ const AdminPage = ({ children }) => {
 				duration-500 ease-in-out"
           >
             <button
-              onClick={() => history.push("/")}
+              onClick={() => history.push("/site-management")}
               className="focus:text-pink-500 dark-focus:text-pink-400
 					focus:outline-none w-full transition duration-500 ease-in-out"
             >

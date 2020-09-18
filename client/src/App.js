@@ -12,6 +12,7 @@ import UnAuthenticatedRoute from "./hoc/UnAuthenticatedRoute";
 import { isAuthenticated } from "./store/actions/authActions";
 import Transactions from "./components/Transactions";
 import AdminLayout from "./components/AdminLayout";
+import SiteManagement from "./components/SiteManagement";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,11 @@ function App() {
         />
         <AdminLayout>
           <PrivateRoute path="/admin" auth={auth} component={Transactions} />
+          <PrivateRoute
+            path="/site-management"
+            auth={auth}
+            component={SiteManagement}
+          />
           <PrivateRoute
             path="/image-management"
             auth={auth}
