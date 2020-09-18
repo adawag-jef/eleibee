@@ -14,7 +14,7 @@ const FileUpload = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get("/image");
+        const response = await axios.get("/api/image");
         setImages(response.data);
       } catch (error) {
         console.log(error);
@@ -30,8 +30,8 @@ const FileUpload = () => {
 
   const handleDeleteImage = async (img_id) => {
     try {
-      await axios.delete(`/image/${img_id}`);
-      const response = await axios.get("/image");
+      await axios.delete(`/api/image/${img_id}`);
+      const response = await axios.get("/api/image");
       setImages(response.data);
     } catch (error) {
       console.log(error);
@@ -44,7 +44,7 @@ const FileUpload = () => {
     formData.append("sampleFile", file);
 
     try {
-      const res = await axios.post("/image/upload", formData, {
+      const res = await axios.post("/api/image/upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -62,7 +62,7 @@ const FileUpload = () => {
       });
       const { fileName, filePath } = res.data;
       setUploadedFile({ fileName, filePath });
-      const response = await axios.get("/image");
+      const response = await axios.get("/api/image");
       setImages(response.data);
       setMessage("File Uploaded");
     } catch (err) {

@@ -47,12 +47,10 @@ router.post(
     const fileStoragePath = path.join(
       __dirname,
       "..",
-      "client",
-      "public",
       process.env.UPLOAD_DIR,
       fileName
     );
-    const filePath = `/${process.env.UPLOAD_DIR}/${fileName}`;
+    const filePath = `/uploads/${fileName}`;
 
     sampleFile.mv(fileStoragePath, function (err) {
       if (err) return res.status(500).send(err);
@@ -90,8 +88,6 @@ router.delete("/:img_id", (req, res) => {
       const fileStoragePath = path.join(
         __dirname,
         "..",
-        "client",
-        "public",
         process.env.UPLOAD_DIR,
         image.file_name
       );

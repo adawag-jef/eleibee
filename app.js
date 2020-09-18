@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const fileUpload = require("express-fileupload");
+const path = require("path");
 const app = express();
 
 const cookieParser = require("cookie-parser");
@@ -18,6 +19,10 @@ app.use(
   })
 );
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
+
 mongoose.connect(
   process.env.MONGODB_URI,
   {
@@ -28,8 +33,15 @@ mongoose.connect(
     console.log("Successfully connected to database");
   }
 );
-app.use("/user", require("./routes/User"));
-app.use("/image", require("./routes/FileUpload"));
+
+app.use("/api/user", require("./routes/User"));
+app.use("/api/image", require("./routes/FileUpload"));
+
+if (process.env.NODE_ENV === "production") {
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+}
 
 app.listen(PORT, () => {
   console.log("Express server started at port " + PORT);

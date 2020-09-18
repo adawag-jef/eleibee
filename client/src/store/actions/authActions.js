@@ -10,7 +10,7 @@ import {
 
 export const login = (user, history) => async (dispatch) => {
   try {
-    const response = await axios.post("/user/login", user);
+    const response = await axios.post("/api/user/login", user);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -27,7 +27,7 @@ export const login = (user, history) => async (dispatch) => {
 
 export const register = (user, history) => async (dispatch) => {
   try {
-    await axios.post("/user/register", user);
+    await axios.post("/api/user/register", user);
     dispatch(
       login({ username: user.username, password: user.password }, history)
     );
@@ -42,7 +42,7 @@ export const register = (user, history) => async (dispatch) => {
 
 export const logout = (history) => async (dispatch) => {
   try {
-    const response = await axios.get("/user/logout");
+    const response = await axios.get("/api/user/logout");
     dispatch({
       type: LOGOUT,
       payload: response.data,
@@ -55,7 +55,7 @@ export const logout = (history) => async (dispatch) => {
 
 export const isAuthenticated = () => async (dispatch) => {
   try {
-    const response = await axios.get("/user/authenticated");
+    const response = await axios.get("/api/user/authenticated");
     dispatch({
       type: AUTHENTICATE_SUCCESS,
       payload: response.data,
