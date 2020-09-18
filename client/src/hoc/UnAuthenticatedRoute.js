@@ -8,7 +8,9 @@ const UnAuthenticatedRoute = ({ component: Component, auth, ...rest }) => {
       render={(props) => {
         if (auth.isAuthenticated) {
           return (
-            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+            <Redirect
+              to={{ pathname: "/admin", state: { from: props.location } }}
+            />
           );
         }
         return <Component {...props} />;
