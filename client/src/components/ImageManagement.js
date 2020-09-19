@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import AlertMessage from "./AlertMessage";
 import axios from "axios";
+import Toast from "./Toast";
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState("");
   const [uploadedFile, setUploadedFile] = useState({});
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({ msg: "", type: "" });
   const [uploadPercentage, setUploadPercentage] = useState(0);
+  const [showToast, setShowToast] = useState(false);
 
   const [images, setImages] = useState([]);
 
@@ -33,6 +35,8 @@ const FileUpload = () => {
       await axios.delete(`/api/image/${img_id}`);
       const response = await axios.get("/api/image");
       setImages(response.data);
+      setMessage({ msg: "File deleted", type: "success" });
+      setShowToast(true);
     } catch (error) {
       console.log(error);
     }
@@ -57,20 +61,29 @@ const FileUpload = () => {
           //clear percentage
           setTimeout(() => {
             setUploadPercentage(0);
-          }, 5000);
+          }, 2000);
         },
       });
       const { fileName, filePath } = res.data;
       setUploadedFile({ fileName, filePath });
       const response = await axios.get("/api/image");
       setImages(response.data);
-      setMessage("File Uploaded");
+      setMessage({ msg: "File uploaded", type: "success" });
+      setShowToast(true);
     } catch (err) {
       if (err.response.status === 500) {
-        setMessage("There was a problem with the server");
+        setMessage({
+          msg: "There was a problem with the server",
+          type: "danger",
+        });
+        setShowToast(true);
       } else {
-        setMessage(err.response.data);
+        setMessage({ msg: err.response.data, type: "danger" });
+        setShowToast(true);
       }
+    } finally {
+      setFile(null);
+      setFilename("");
     }
   };
   return (
@@ -146,7 +159,6 @@ const FileUpload = () => {
             style={{ width: `${uploadPercentage}%` }}
           ></div>
         </div>
-        {message ? <AlertMessage msg={message} /> : null}
         <form onSubmit={onSubmit}>
           {/* <div>
             <label htmlFor="file-upload">{filename}</label>
@@ -384,6 +396,13 @@ const FileUpload = () => {
           </div>
         </div>
       </div>
+      {/* <button onClick={() => setShowToast(!showToast)}>Show Toast</button> */}
+      <Toast
+        showToast={showToast}
+        message={message.msg}
+        type={message.type}
+        handler={setShowToast}
+      />
     </>
   );
 };
