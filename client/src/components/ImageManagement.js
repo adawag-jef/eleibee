@@ -1,28 +1,24 @@
 import React, { useState, useEffect } from "react";
-import AlertMessage from "./AlertMessage";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import Toast from "./Toast";
 
+import {
+  fetchImages,
+  deleteImage,
+  uploadImage,
+} from "../store/actions/imageMngtAction";
+
 const FileUpload = () => {
+  const dispatch = useDispatch();
+  const { images, percentage } = useSelector((state) => state.imageMngtReducer);
+
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState("");
-  const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState({ msg: "", type: "" });
-  const [uploadPercentage, setUploadPercentage] = useState(0);
   const [showToast, setShowToast] = useState(false);
 
-  const [images, setImages] = useState([]);
-
   useEffect(() => {
-    const fetchImages = async () => {
-      try {
-        const response = await axios.get("/api/image");
-        setImages(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchImages();
+    dispatch(fetchImages());
   }, []);
 
   const onChange = (e) => {
@@ -31,60 +27,37 @@ const FileUpload = () => {
   };
 
   const handleDeleteImage = async (img_id) => {
-    try {
-      await axios.delete(`/api/image/${img_id}`);
-      const response = await axios.get("/api/image");
-      setImages(response.data);
+    const success = () => {
       setMessage({ msg: "File deleted", type: "success" });
       setShowToast(true);
-    } catch (error) {
-      console.log(error);
-    }
+    };
+    const fail = (err) => {
+      setMessage({ msg: err.response.message, type: "danger" });
+      setShowToast(true);
+    };
+    dispatch(deleteImage(img_id, success, fail));
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("sampleFile", file);
 
-    try {
-      const res = await axios.post("/api/image/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        onUploadProgress: (progressEvent) => {
-          setUploadPercentage(
-            parseInt(
-              Math.round(progressEvent.loaded * 100) / progressEvent.total
-            )
-          );
-          //clear percentage
-          setTimeout(() => {
-            setUploadPercentage(0);
-          }, 2000);
-        },
-      });
-      const { fileName, filePath } = res.data;
-      setUploadedFile({ fileName, filePath });
-      const response = await axios.get("/api/image");
-      setImages(response.data);
+    const success = () => {
       setMessage({ msg: "File uploaded", type: "success" });
       setShowToast(true);
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage({
-          msg: "There was a problem with the server",
-          type: "danger",
-        });
-        setShowToast(true);
-      } else {
-        setMessage({ msg: err.response.data, type: "danger" });
-        setShowToast(true);
-      }
-    } finally {
-      setFile(null);
       setFilename("");
-    }
+      setFile(null);
+    };
+    const fail = (msg) => {
+      setMessage({
+        msg: msg,
+        type: "danger",
+      });
+      setShowToast(true);
+      setFilename("");
+      setFile(null);
+    };
+
+    dispatch(uploadImage(file, success, fail));
   };
   return (
     <>
@@ -156,15 +129,10 @@ const FileUpload = () => {
           <div className="h-full bg-gray-200 absolute"></div>
           <div
             className="h-full bg-green-500 absolute"
-            style={{ width: `${uploadPercentage}%` }}
+            style={{ width: `${percentage}%` }}
           ></div>
         </div>
         <form onSubmit={onSubmit}>
-          {/* <div>
-            <label htmlFor="file-upload">{filename}</label>
-            <input type="file" id="file-upload" onChange={onChange} />
-          </div> */}
-
           <div className="border border-dashed border-gray-500 relative hover:bg-gray-400 hover:text-gray-100 transition-all duration-500 ease-in-out">
             <input
               type="file"
@@ -177,11 +145,11 @@ const FileUpload = () => {
               ) : (
                 <>
                   <h4>
-                    Drop files anywhere to upload
+                    Drop image anywhere to upload
                     <br />
                     or
                   </h4>
-                  <p className="">Select Files</p>
+                  <p className="">Select Image</p>
                 </>
               )}
             </div>
@@ -396,7 +364,6 @@ const FileUpload = () => {
           </div>
         </div>
       </div>
-      {/* <button onClick={() => setShowToast(!showToast)}>Show Toast</button> */}
       <Toast
         showToast={showToast}
         message={message.msg}
