@@ -16,7 +16,7 @@ export const login = (user, history) => async (dispatch) => {
       type: LOGIN_SUCCESS,
       payload: response.data,
     });
-    history.push("/admin");
+    history.push("/dashboard");
   } catch (error) {
     dispatch({
       type: LOGIN_ERROR,

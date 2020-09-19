@@ -45,11 +45,12 @@ const AdminPage = ({ children }) => {
 				duration-500 ease-in-out"
           >
             <button
+              onClick={() => history.push("/dashboard")}
               className="focus:text-pink-500 dark-focus:text-pink-400
 					focus:outline-none w-full transition duration-500 ease-in-out"
             >
               <span className="flex items-center">
-                <svg className="h-4 w-4 fill-current" viewBox="0 0 576 512">
+                {/* <svg className="h-4 w-4 fill-current" viewBox="0 0 576 512">
                   <path
                     d="M527.9 32H48.1C21.5 32 0 53.5 0 80v352c0 26.5
 								21.5 48 48.1 48h479.8c26.6 0 48.1-21.5
@@ -63,8 +64,21 @@ const AdminPage = ({ children }) => {
 								0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h136c6.6 0
 								12 5.4 12 12z"
                   ></path>
+                </svg> */}
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  />
                 </svg>
-                <span className="ml-4 capitalize">Card</span>
+                <span className="ml-4 capitalize">Dashboard</span>
               </span>
             </button>
           </li>
@@ -75,7 +89,7 @@ const AdminPage = ({ children }) => {
 				duration-500 ease-in-out"
           >
             <button
-              onClick={() => history.push("/admin")}
+              onClick={() => history.push("/transactions")}
               className="focus:text-pink-500 dark-focus:text-pink-400
 					focus:outline-none w-full transition duration-500 ease-in-out"
             >
@@ -147,11 +161,24 @@ const AdminPage = ({ children }) => {
             >
               <span className="flex items-center">
                 <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                  <path
+                  {/* <path
                     d="M21 8V6H7v2h14m0 8v-5H7v5h14m0-12a2 2 0 012
 								2v10a2 2 0 01-2 2H7a2 2 0 01-2-2V6c0-1.11.89-2
 								2-2h14M3 20h15v2H3a2 2 0 01-2-2V9h2v11z"
-                  ></path>
+                  ></path> */}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
                 </svg>
                 <span className="ml-4 capitalize">Image management</span>
               </span>
@@ -169,8 +196,18 @@ const AdminPage = ({ children }) => {
 					focus:outline-none w-full transition duration-500 ease-in-out"
             >
               <span className="flex items-center">
-                <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M3 13h12v-2H3m0-5v2h18V6M3 18h6v-2H3v2z"></path>
+                <svg
+                  className="h-4 w-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"
+                  />
                 </svg>
                 <span className="ml-4 capitalize">Site Management</span>
               </span>
@@ -214,6 +251,7 @@ const AdminPage = ({ children }) => {
           <button
             onClick={handleLogout}
             className="mx-auto
+                    flex items-center
 										focus:outline-none border rounded-full
 										py-2 px-6 leading-none border-blue-500
 										dark:border-blue-600 select-none
@@ -221,6 +259,19 @@ const AdminPage = ({ children }) => {
                     hover:bg-white hover:text-blue-400
 										dark-hover:text-gray-200 transition duration-300 ease-in-out"
           >
+            <svg
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-4 w-4 mr-3"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
             Logout
           </button>
         </div>

@@ -9,7 +9,7 @@ const UnAuthenticatedRoute = ({ component: Component, auth, ...rest }) => {
         if (auth.isAuthenticated) {
           return (
             <Redirect
-              to={{ pathname: "/admin", state: { from: props.location } }}
+              to={{ pathname: "/dashboard", state: { from: props.location } }}
             />
           );
         }

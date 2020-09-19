@@ -10,6 +10,7 @@ import PrivateRoute from "./hoc/PrivateRoute";
 import UnAuthenticatedRoute from "./hoc/UnAuthenticatedRoute";
 
 import { isAuthenticated } from "./store/actions/authActions";
+import Dashboard from "./components/Dashboard";
 import Transactions from "./components/Transactions";
 import AdminLayout from "./components/AdminLayout";
 import SiteManagement from "./components/SiteManagement";
@@ -40,7 +41,12 @@ function App() {
           component={Register}
         />
         <AdminLayout>
-          <PrivateRoute path="/admin" auth={auth} component={Transactions} />
+          <PrivateRoute path="/dashboard" auth={auth} component={Dashboard} />
+          <PrivateRoute
+            path="/transactions"
+            auth={auth}
+            component={Transactions}
+          />
           <PrivateRoute
             path="/site-management"
             auth={auth}
