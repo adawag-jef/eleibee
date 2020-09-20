@@ -4,6 +4,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import configureStore from "./store";
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./styles.css";
 
 const store = configureStore();

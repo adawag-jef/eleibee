@@ -1,6 +1,16 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const NotFound = ({ history }) => {
+  const auth = useSelector((state) => state.authReducer);
+
+  const handleBackToHome = () => {
+    if (auth.isAuthenticated) {
+      history.push("/dashboard");
+    } else {
+      history.push("/");
+    }
+  };
   return (
     <>
       <div className="h-screen w-screen bg-gray-100 flex items-center justify-center">
@@ -16,7 +26,7 @@ const NotFound = ({ history }) => {
             </p>
 
             <button
-              onClick={() => history.push("/dashboard")}
+              onClick={handleBackToHome}
               className="px-4 inline py-2 text-sm font-medium leading-5 shadow text-white transition-colors duration-150 border border-transparent rounded-lg focus:outline-none focus:shadow-outline-blue bg-pink-400 active:bg-pink-500 hover:bg-pink-500"
             >
               back to homepage

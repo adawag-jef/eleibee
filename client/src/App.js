@@ -15,9 +15,6 @@ import Dashboard from "./components/Dashboard";
 import Transactions from "./components/Transactions";
 import SiteManagement from "./components/SiteManagement";
 import NotFound from "./components/NotFound";
-import AdminLayout from "./containers/AdminLayout";
-
-import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import NavigationTab from "../components/NavigationTab";
 import { logout } from "../store/actions/authActions";
 
 const AdminLayout = ({ children }) => {
@@ -9,6 +10,39 @@ const AdminLayout = ({ children }) => {
   const handleLogout = (e) => {
     dispatch(logout(history));
   };
+
+  const tabs = [
+    {
+      title: "Dashboard",
+      route: "/dashboard",
+      icon: "fas fa-tachometer-alt",
+    },
+    {
+      title: "Transactions",
+      route: "/transactions",
+      icon: "far fa-chart-bar",
+    },
+    {
+      title: "User Management",
+      route: "/user-management",
+      icon: "fas fa-users-cog",
+    },
+    {
+      title: "Image Management",
+      route: "/image-management",
+      icon: "far fa-images",
+    },
+    {
+      title: "Site Management",
+      route: "/site-management",
+      icon: "fas fa-tasks",
+    },
+    {
+      title: "My Profile",
+      route: "/my-profile",
+      icon: "far fa-user-circle",
+    },
+  ];
 
   return (
     <div className="h-screen flex">
@@ -37,25 +71,7 @@ const AdminLayout = ({ children }) => {
           </span>
         </div>
 
-        <ul>
-          <li
-            className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
-				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              onClick={() => history.push("/dashboard")}
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="h-4 w-4 fas fa-tachometer-alt"></i>
-                <span className="ml-4 capitalize">Dashboard</span>
-              </span>
-            </button>
-          </li>
-
-          <li
+        {/* <li
             className="pl-8 py-2 font-semibold dark:text-pink-400
 				hover:bg-pink-200 mb-2 transition
 				duration-500 ease-in-out"
@@ -66,34 +82,13 @@ const AdminLayout = ({ children }) => {
 					focus:outline-none w-full transition duration-500 ease-in-out"
             >
               <span className="flex items-center">
-                {/* <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M15 5v4h-4v4H7v4H3v3h7v-4h4v-4h4V8h4V5h-7z"></path>
-                </svg> */}
                 <i className="h-4 w-4 far fa-chart-bar"></i>
-                <span className="ml-4 capitalize">Transactions</span>
-              </span>
-            </button>
-          </li>
-          {/* <li
-            className="pl-8 py-2 font-semibold text-pink-500 dark:text-pink-400
-				border-l-2 border-pink-500 hover:bg-pink-200 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
-                  <path d="M15 5v4h-4v4H7v4H3v3h7v-4h4v-4h4V8h4V5h-7z"></path>
-                </svg>
-
                 <span className="ml-4 capitalize">Transactions</span>
               </span>
             </button>
           </li> */}
 
-          <li
+        {/* <li
             className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
 				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
 				duration-500 ease-in-out"
@@ -107,9 +102,9 @@ const AdminLayout = ({ children }) => {
                 <span className="ml-4 capitalize">User Management</span>
               </span>
             </button>
-          </li>
+          </li> */}
 
-          <li
+        {/* <li
             className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
 				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
 				duration-500 ease-in-out"
@@ -124,9 +119,9 @@ const AdminLayout = ({ children }) => {
                 <span className="ml-4 capitalize">Image management</span>
               </span>
             </button>
-          </li>
+          </li> */}
 
-          <li
+        {/* <li
             className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
 				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
 				duration-500 ease-in-out"
@@ -141,9 +136,9 @@ const AdminLayout = ({ children }) => {
                 <span className="ml-4 capitalize">Site Management</span>
               </span>
             </button>
-          </li>
+          </li> */}
 
-          <li
+        {/* <li
             className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
 				hover:bg-pink-200 dark-hover:bg-pink-500 transition duration-500
 				ease-in-out"
@@ -157,8 +152,8 @@ const AdminLayout = ({ children }) => {
                 <span className="ml-4 capitalize">My Profile</span>
               </span>
             </button>
-          </li>
-        </ul>
+          </li> */}
+        <NavigationTab tabs={tabs} history={history} />
         <div className="flex items-center mt-56">
           <button
             onClick={handleLogout}
