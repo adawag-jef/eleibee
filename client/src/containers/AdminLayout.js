@@ -46,15 +46,9 @@ const AdminLayout = ({ children }) => {
 
   return (
     <div className="h-screen flex">
-      <nav
-        className="w-56 bg-white dark:bg-gray-800 select-none overflow-y-auto
-		transition duration-500 ease-in-out"
-      >
+      <nav className="w-56 bg-white dark:bg-gray-800 select-none overflow-y-auto transition duration-500 ease-in-out">
         <div className="flex flex-col items-center ">
-          <h1
-            className="text-6xl font-light text-pink-600 dark:text-pink-400 mt-0
-				transition duration-500 ease-in-out"
-          >
+          <h1 className="text-6xl font-light text-pink-600 dark:text-pink-400 mt-0 transition duration-500 ease-in-out">
             Eleibee
           </h1>
 
@@ -63,97 +57,13 @@ const AdminLayout = ({ children }) => {
             src="/catalyst.png"
             alt="mickey mouse Profile"
           />
-          <span
-            className="mt-2 mb-6 dark:text-gray-200 transition
-				duration-500 ease-in-out"
-          >
+          <span className="mt-2 mb-6 dark:text-gray-200 transition duration-500 ease-in-out">
             @spare_bee
           </span>
         </div>
 
-        {/* <li
-            className="pl-8 py-2 font-semibold dark:text-pink-400
-				hover:bg-pink-200 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              onClick={() => history.push("/transactions")}
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="h-4 w-4 far fa-chart-bar"></i>
-                <span className="ml-4 capitalize">Transactions</span>
-              </span>
-            </button>
-          </li> */}
-
-        {/* <li
-            className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
-				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="h-4 w-4  fas fa-users-cog"></i>
-                <span className="ml-4 capitalize">User Management</span>
-              </span>
-            </button>
-          </li> */}
-
-        {/* <li
-            className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
-				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              onClick={() => history.push("/image-management")}
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="far fa-images"></i>
-                <span className="ml-4 capitalize">Image management</span>
-              </span>
-            </button>
-          </li> */}
-
-        {/* <li
-            className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
-				hover:bg-pink-200 dark-hover:bg-pink-500 mb-2 transition
-				duration-500 ease-in-out"
-          >
-            <button
-              onClick={() => history.push("/site-management")}
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="fas fa-tasks"></i>
-                <span className="ml-4 capitalize">Site Management</span>
-              </span>
-            </button>
-          </li> */}
-
-        {/* <li
-            className="pl-8 py-2 font-semibold text-gray-700 dark:text-gray-400
-				hover:bg-pink-200 dark-hover:bg-pink-500 transition duration-500
-				ease-in-out"
-          >
-            <button
-              className="focus:text-pink-500 dark-focus:text-pink-400
-					focus:outline-none w-full transition duration-500 ease-in-out"
-            >
-              <span className="flex items-center">
-                <i className="far fa-user-circle"></i>
-                <span className="ml-4 capitalize">My Profile</span>
-              </span>
-            </button>
-          </li> */}
         <NavigationTab tabs={tabs} history={history} />
+
         <div className="flex items-center mt-56">
           <button
             onClick={handleLogout}
@@ -172,10 +82,7 @@ const AdminLayout = ({ children }) => {
         </div>
       </nav>
 
-      <main
-        className="flex-1 bg-gray-200 dark:bg-gray-900 overflow-y-auto transition
-		duration-500 ease-in-out"
-      >
+      <main className="flex-1 bg-gray-200 dark:bg-gray-900 overflow-y-auto transition duration-500 ease-in-out">
         {children}
       </main>
     </div>
