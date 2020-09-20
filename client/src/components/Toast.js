@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Transition from "./Transition";
 
-const Toast = ({ showToast, message, type, handler }) => {
+const Toast = ({ showToast, message, type, onCloseRequest }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
-      handler(false);
+      onCloseRequest();
     }, 2000);
     return () => clearTimeout(timer);
   }, [showToast]);
@@ -40,7 +40,7 @@ const Toast = ({ showToast, message, type, handler }) => {
     >
       <div className="alert-toast fixed bottom-0 right-0 m-8 w-5/6 md:w-full max-w-sm">
         <label
-          onClick={() => handler(false)}
+          onClick={() => onCloseRequest()}
           className={`close cursor-pointer flex items-start justify-between w-full p-2 h-24 rounded shadow-lg text-white  ${bgColor(
             type
           )}`}

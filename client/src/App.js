@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -12,8 +13,11 @@ import UnAuthenticatedRoute from "./hoc/UnAuthenticatedRoute";
 import { isAuthenticated } from "./store/actions/authActions";
 import Dashboard from "./components/Dashboard";
 import Transactions from "./components/Transactions";
-import AdminLayout from "./components/AdminLayout";
 import SiteManagement from "./components/SiteManagement";
+import NotFound from "./components/NotFound";
+import AdminLayout from "./containers/AdminLayout";
+
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -35,29 +39,36 @@ function App() {
       <Switch>
         <Route exact path="/" component={Home} />
         <UnAuthenticatedRoute path="/login" auth={auth} component={Login} />
-        <UnAuthenticatedRoute
+        {/* <UnAuthenticatedRoute
           path="/register"
           auth={auth}
           component={Register}
-        />
-        <AdminLayout>
-          <PrivateRoute path="/dashboard" auth={auth} component={Dashboard} />
-          <PrivateRoute
-            path="/transactions"
-            auth={auth}
-            component={Transactions}
-          />
-          <PrivateRoute
-            path="/site-management"
-            auth={auth}
-            component={SiteManagement}
-          />
-          <PrivateRoute
-            path="/image-management"
-            auth={auth}
-            component={ImageManagement}
-          />
-        </AdminLayout>
+        /> */}
+
+        <PrivateRoute path="/dashboard" auth={auth}>
+          <AdminLayout>
+            <Dashboard />
+          </AdminLayout>
+        </PrivateRoute>
+
+        <PrivateRoute path="/transactions" auth={auth}>
+          <AdminLayout>
+            <Transactions />
+          </AdminLayout>
+        </PrivateRoute>
+
+        <PrivateRoute path="/site-management" auth={auth}>
+          <AdminLayout>
+            <SiteManagement />
+          </AdminLayout>
+        </PrivateRoute>
+
+        <PrivateRoute path="/image-management" auth={auth}>
+          <AdminLayout>
+            <ImageManagement />
+          </AdminLayout>
+        </PrivateRoute>
+        <Route path="*" component={NotFound} />
       </Switch>
     </Router>
   );

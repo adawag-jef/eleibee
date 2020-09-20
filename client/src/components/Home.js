@@ -3,381 +3,403 @@ import React from "react";
 const Home = () => {
   return (
     <>
-      <section
-        className="font-sans h-screen w-full bg-cover text-center flex flex-col items-center justify-center"
-        style={{
-          background:
-            "url(https://source.unsplash.com/random/1920x1080) no-repeat center",
-        }}
-      >
-        <label
-          htmlFor=""
-          className="uppercase tracking-extrawide text-white text-xs font-hairline mt-8"
-        >
-          Welcome
-        </label>
-        <h3 className="text-white mx-auto max-w-sm mt-4 font-normal text-2xl leading-normal">
-          Differentiate Yourself And Attract More Attention Sales And Profits
-        </h3>
-      </section>
-
-      {/* sections */}
-
-      <section className="text-gray-700 body-font">
-        <div className="container px-8 py-24 mx-auto flex flex-wrap">
-          <div className="flex w-full mb-20 flex-wrap">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font text-gray-900 lg:w-1/3 lg:mb-0 mb-4">
-              Master Cleanse Reliac Heirloom
-            </h1>
-            <p className="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify, subway tile poke farm-to-table. Franzen you probably
-              haven't heard of them man bun deep jianbing selfies heirloom.
-            </p>
-          </div>
-          <div className="flex flex-wrap md:-m-2 -m-1">
-            <div className="flex flex-wrap w-1/2">
-              <div className="md:p-2 p-1 w-1/2">
-                <img
-                  alt="gallery"
-                  className="w-full object-cover h-full object-center block"
-                  src="https://dummyimage.com/500x300"
-                />
-              </div>
-              <div className="md:p-2 p-1 w-1/2">
-                <img
-                  alt="gallery"
-                  className="w-full object-cover h-full object-center block"
-                  src="https://dummyimage.com/501x301"
-                />
-              </div>
-              <div className="md:p-2 p-1 w-full">
-                <img
-                  alt="gallery"
-                  className="w-full h-full object-cover object-center block"
-                  src="https://dummyimage.com/600x360"
-                />
-              </div>
-            </div>
-            <div className="flex flex-wrap w-1/2">
-              <div className="md:p-2 p-1 w-full">
-                <img
-                  alt="gallery"
-                  className="w-full h-full object-cover object-center block"
-                  src="https://dummyimage.com/601x361"
-                />
-              </div>
-              <div className="md:p-2 p-1 w-1/2">
-                <img
-                  alt="gallery"
-                  className="w-full object-cover h-full object-center block"
-                  src="https://dummyimage.com/502x302"
-                />
-              </div>
-              <div className="md:p-2 p-1 w-1/2">
-                <img
-                  alt="gallery"
-                  className="w-full object-cover h-full object-center block"
-                  src="https://dummyimage.com/503x303"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* gallery */}
-      <section className="text-gray-700 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          <div className="flex flex-col text-center w-full mb-20">
-            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
-              Master Cleanse Reliac Heirloom
-            </h1>
-            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-              Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical
-              gentrify, subway tile poke farm-to-table. Franzen you probably
-              haven't heard of them man bun deep jianbing selfies heirloom.
-            </p>
-          </div>
-          <div className="flex flex-wrap -m-4">
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    Shooting Stars
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    The Catalyzer
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    The 400 Blows
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    Neptune
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    Holden Caulfield
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:w-1/3 sm:w-1/2 p-4">
-              <div className="flex relative">
-                <img
-                  alt="gallery"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                  src="https://dummyimage.com/600x360"
-                />
-                <div className="px-8 py-10 relative z-10 w-full border-4 border-gray-200 bg-white opacity-0 hover:opacity-100 cursor-pointer transition-all duration-500 ease-in-out">
-                  <h2 className="tracking-widest text-sm title-font font-medium text-orange-500 mb-1">
-                    THE SUBTITLE
-                  </h2>
-                  <h1 className="title-font text-lg font-medium text-gray-900 mb-3">
-                    Alper Kamu
-                  </h1>
-                  <p className="leading-relaxed">
-                    Photo booth fam kinfolk cold-pressed sriracha leggings
-                    jianbing microdosing tousled waistcoat.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="font-sans bg-pink-400 text-white py-8 px-4">
-        <div className="mx-auto container overflow-hidden flex flex-col lg:flex-row justify-between">
-          <a href="/" className="block mr-4 w-1/2">
-            <img src="/logo512.png" className="w-32" alt="logo" />
+      {/* <!-- component --> */}
+      <div className="max-w-screen-xl mx-auto">
+        {/* <!-- header --> */}
+        <header className="flex items-center justify-between py-2 border-b">
+          <a
+            href="#"
+            className="px-2 lg:px-0 uppercase font-bold text-purple-800"
+          >
+            LOGO
           </a>
-          <div className="w-1/2 flex text-sm mt-6 lg:mt-0">
-            <ul className="text-gray-700 list-none p-0 font-thin flex flex-col text-left">
-              <li className="inline-block py-2 px-3 text-white uppercase no-underline font-medium tracking-wide">
-                Product
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Popular
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Trending
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Catalog
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Features
-                </a>
-              </li>
-            </ul>
-            <ul className="text-gray-700 list-none p-0 font-thin flex flex-col text-left">
-              <li className="inline-block py-2 px-3 text-white uppercase no-underline font-medium tracking-wide">
-                Company
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Press Release
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Mission
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Strategy
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Works
-                </a>
-              </li>
-            </ul>
-            <ul className="text-gray-700 list-none p-0 font-thin flex flex-col text-left">
-              <li className="inline-block py-2 px-3 text-white uppercase no-underline font-medium tracking-wide">
-                Info
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Support
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Developers
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Customer Services
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="inline-block py-2 px-3 text-white hover:text-gray-400 no-underline"
-                >
-                  Started Guide
-                </a>
-              </li>
-            </ul>
-            <div className="text-gray-700 flex flex-col">
-              <div className="inline-block py-2 px-3 text-white uppercase font-medium tracking-wide">
-                Follow Us
+          <ul className="inline-flex items-center">
+            <li className="px-2 md:px-4">
+              <a
+                href=""
+                className="text-purple-600 font-semibold hover:text-purple-500"
+              >
+                Home
+              </a>
+            </li>
+            <li className="px-2 md:px-4">
+              <a
+                href=""
+                className="text-gray-500 font-semibold hover:text-purple-500"
+              >
+                About
+              </a>
+            </li>
+            <li className="px-2 md:px-4">
+              <a
+                href=""
+                className="text-gray-500 font-semibold hover:text-purple-500"
+              >
+                Press
+              </a>
+            </li>
+            <li className="px-2 md:px-4">
+              <a
+                href=""
+                className="text-gray-500 font-semibold hover:text-purple-500"
+              >
+                Contact
+              </a>
+            </li>
+            <li className="px-2 md:px-4 hidden md:block">
+              <a
+                href=""
+                className="text-gray-500 font-semibold hover:text-purple-500"
+              >
+                Login
+              </a>
+            </li>
+            <li className="px-2 md:px-4 hidden md:block">
+              <a
+                href=""
+                className="text-gray-500 font-semibold hover:text-purple-500"
+              >
+                Register
+              </a>
+            </li>
+          </ul>
+        </header>
+        {/* <!-- header ends here --> */}
+
+        <main className="mt-10">
+          <div className="block md:flex md:space-x-2 px-2 lg:p-0">
+            <a
+              className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block"
+              style={{ height: "24em" }}
+              href="./blog.html"
+            >
+              <div
+                className="absolute left-0 bottom-0 w-full h-full z-10"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+                }}
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+                className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+              />
+              <div className="p-4 absolute bottom-0 left-0 z-20">
+                <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                  Nutrition
+                </span>
+                <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
+                  Pellentesque a consectetur velit, ac molestie ipsum. Donec
+                  sodales, massa et auctor.
+                </h2>
+                <div className="flex mt-3">
+                  <img
+                    src="https://randomuser.me/api/portraits/men/97.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-200 text-sm">
+                      Mike Sullivan
+                    </p>
+                    <p className="font-semibold text-gray-400 text-xs">
+                      14 Aug
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex pl-4 justify-start">
-                <a
-                  className="block flex items-center text-white hover:text-gray-500 mr-6 no-underline"
-                  href="#"
-                >
-                  <i className="fab fa-github-alt"></i>
-                </a>
-                <a
-                  className="block flex items-center text-white hover:text-gray-500 mr-6 no-underline"
-                  href="#"
-                >
-                  <i className="fab fa-slack"></i>
-                </a>
-                <a
-                  className="block flex items-center text-white hover:text-gray-500 no-underline"
-                  href="#"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
+            </a>
+
+            <a
+              className="w-full md:w-1/3 relative rounded"
+              style={{ height: "24em" }}
+              href="./blog.html"
+            >
+              <div
+                className="absolute left-0 top-0 w-full h-full z-10"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
+                }}
+              ></div>
+              <img
+                src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+                className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
+              />
+              <div className="p-4 absolute bottom-0 left-0 z-20">
+                <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
+                  Science
+                </span>
+                <h2 className="text-3xl font-semibold text-gray-100 leading-tight">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                </h2>
+                <div className="flex mt-3">
+                  <img
+                    src="https://images-na.ssl-images-amazon.com/images/M/MV5BODFjZTkwMjItYzRhMS00OWYxLWI3YTUtNWIzOWQ4Yjg4NGZiXkEyXkFqcGdeQXVyMTQ0ODAxNzE@._V1_UX172_CR0,0,172,256_AL_.jpg"
+                    className="h-10 w-10 rounded-full mr-2 object-cover"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-200 text-sm">
+                      Chrishell Staus
+                    </p>
+                    <p className="font-semibold text-gray-400 text-xs">
+                      15 Aug
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
+            {/* <!-- post cards --> */}
+            <div className="w-full lg:w-2/3">
+              <a
+                className="block rounded w-full lg:flex mb-10"
+                href="./blog-single-1.html"
+              >
+                <div
+                  className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                  style={{
+                    backgroundImage:
+                      "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                  }}
+                  title="deit is very important"
+                ></div>
+                <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                  <div>
+                    <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                      Aliquam venenatis nisl id purus rhoncus, in efficitur sem
+                      hendrerit.
+                    </div>
+                    <p className="text-gray-700 text-base">
+                      Duis euismod est quis lacus elementum, eu laoreet dolor
+                      consectetur. Pellentesque sed neque vel tellus lacinia
+                      elementum. Proin consequat ullamcorper eleifend.
+                    </p>
+                  </div>
+                  <div className="flex mt-3">
+                    <img
+                      src="https://randomuser.me/api/portraits/men/86.jpg"
+                      className="h-10 w-10 rounded-full mr-2 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-700 text-sm capitalize">
+                        eduard franz
+                      </p>
+                      <p className="text-gray-600 text-xs"> 14 Aug </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+
+              <div className="rounded w-full lg:flex mb-10">
+                <div
+                  className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                  style={{
+                    backgroundImage:
+                      "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                  }}
+                  title="deit is very important"
+                ></div>
+                <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                  <div>
+                    <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                      Integer commodo, sapien ut vulputate viverra
+                    </div>
+                    <p className="text-gray-700 text-base">
+                      Nam malesuada aliquet metus, ac commodo augue mollis sit
+                      amet. Nam bibendum risus sit amet metus semper
+                      consectetur. Proin consequat ullamcorper eleifend. Nam
+                      bibendum risus sit amet metus semper consectetur.
+                    </p>
+                  </div>
+                  <div className="flex mt-3">
+                    <img
+                      src="https://randomuser.me/api/portraits/women/54.jpg"
+                      className="h-10 w-10 rounded-full mr-2 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-700 text-sm capitalize">
+                        Serenity Hughes
+                      </p>
+                      <p className="text-gray-600 text-xs"> 14 Aug </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded w-full lg:flex mb-10">
+                <div
+                  className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                  style={{
+                    backgroundImage:
+                      "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                  }}
+                  title="deit is very important"
+                ></div>
+                <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                  <div>
+                    <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                      Suspendisse varius justo eu risus laoreet fermentum non
+                      aliquam dolor
+                    </div>
+                    <p className="text-gray-700 text-base">
+                      Mauris porttitor, velit at tempus vulputate, odio turpis
+                      facilisis dui, vitae eleifend odio ipsum at odio.
+                      Phasellus luctus scelerisque felis eget suscipit.
+                    </p>
+                  </div>
+                  <div className="flex mt-3">
+                    <img
+                      src="https://randomuser.me/api/portraits/men/86.jpg"
+                      className="h-10 w-10 rounded-full mr-2 object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-gray-700 text-sm capitalize">
+                        eduard franz
+                      </p>
+                      <p className="text-gray-600 text-xs"> 14 Aug </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
+
+            {/* <!-- right sidebar --> */}
+            <div className="w-full lg:w-1/3 px-3">
+              {/* <!-- topics --> */}
+              <div className="mb-4">
+                <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
+                  Popular Topics
+                </h5>
+                <ul>
+                  <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-600 cursor-pointer"
+                    >
+                      <span className="inline-block h-4 w-4 bg-green-300 mr-3"></span>
+                      Nutrition
+                      <span className="text-gray-500 ml-auto">23 articles</span>
+                      <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    </a>
+                  </li>
+                  <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-600 cursor-pointer"
+                    >
+                      <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
+                      Food & Diet
+                      <span className="text-gray-500 ml-auto">18 articles</span>
+                      <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    </a>
+                  </li>
+                  <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-600 cursor-pointer"
+                    >
+                      <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
+                      Workouts
+                      <span className="text-gray-500 ml-auto">34 articles</span>
+                      <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    </a>
+                  </li>
+                  <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
+                    <a
+                      href="#"
+                      className="flex items-center text-gray-600 cursor-pointer"
+                    >
+                      <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
+                      Immunity
+                      <span className="text-gray-500 ml-auto">9 articles</span>
+                      <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+              {/* <!-- divider --> */}
+              <div className="border border-dotted"></div>
+
+              {/* <!-- subscribe --> */}
+              <div className="p-1 mt-4 mb-4">
+                <h5 className="font-bold text-lg uppercase text-gray-700 mb-2">
+                  Subscribe
+                </h5>
+                <p className="text-gray-600">
+                  Subscribe to our newsletter. We deliver the best health
+                  related articles to your inbox
+                </p>
+                <input
+                  placeholder="your email address"
+                  className="text-gray-700 bg-gray-100 rounded-t hover:outline-none p-2 w-full mt-4 border"
+                />
+                <button className="px-4 py-2 bg-indigo-600 text-gray-200 rounded-b w-full capitalize tracking-wide">
+                  Subscribe
+                </button>
+              </div>
+
+              {/* <!-- divider --> */}
+              <div className="border border-dotted"></div>
+            </div>
           </div>
-        </div>
-        <div className="pt-4 mt-4 text-pink-700 border-t border-pink-900 text-center">
-          ©2020 Eleibee. All rights reserved.
-        </div>
-      </footer>
+        </main>
+        {/* <!-- main ends here --> */}
+
+        {/* <!-- footer --> */}
+        <footer className="border-t mt-32 pt-12 pb-32 px-4 lg:px-0">
+          <div className="flex">
+            <div className="w-full md:w-1/3 lg:w-1/4">
+              <h6 className="font-semibold text-gray-700 mb-4">Company</h6>
+              <ul>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Team
+                  </a>
+                </li>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    About us
+                  </a>
+                </li>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Press
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full md:w-1/3 lg:w-1/4">
+              <h6 className="font-semibold text-gray-700 mb-4">Content</h6>
+              <ul>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Terms & Conditions
+                  </a>
+                </li>
+                <li>
+                  <a href="" className="block text-gray-600 py-2">
+                    Documentation
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </footer>
+      </div>
     </>
   );
 };

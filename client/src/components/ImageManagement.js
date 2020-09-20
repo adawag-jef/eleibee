@@ -368,7 +368,7 @@ const FileUpload = () => {
         showToast={showToast}
         message={message.msg}
         type={message.type}
-        handler={setShowToast}
+        onCloseRequest={() => setShowToast(false)}
       />
     </>
   );
