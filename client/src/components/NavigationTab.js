@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-const NavigationTab = ({ tabs, history }) => {
+const NavigationTab = ({ tabs }) => {
+  const history = useHistory();
   const [currentTab, setCurrentTab] = useState(history.location.pathname);
 
   const handleTabClick = (route) => {

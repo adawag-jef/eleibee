@@ -62,7 +62,7 @@ const AdminLayout = ({ children }) => {
           </span>
         </div>
 
-        <NavigationTab tabs={tabs} history={history} />
+        <NavigationTab tabs={tabs} />
 
         <div className="flex items-center mt-56">
           <button
