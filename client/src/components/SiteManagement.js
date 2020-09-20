@@ -57,8 +57,8 @@ const SiteManagement = () => {
                         "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
                     }}
                   ></div>
-                  <button className="absolute right-0 top-0 bg-orange-500 text-white hover:bg-orange-700 px-2 py-3 z-20 focus:outline-none">
-                    edit
+                  <button className="absolute right-0 top-0 bg-opacity-50 bg-orange-400 text-white hover:bg-orange-500 px-2 py-3 z-20 focus:outline-none transition-all duration-300 ease-in-out">
+                    <i className="fa-2x far fa-edit"></i>
                   </button>
                   <img
                     src={`uploads/ball_1600510261991.png`}
