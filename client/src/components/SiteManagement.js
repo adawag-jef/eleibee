@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AdminLayout from "../containers/AdminLayout";
+import FormModal from "./FormModal";
+
+import { fetchImages } from "../store/actions/imageMngtAction";
 
 const SiteManagement = () => {
+  const dispatch = useDispatch();
+  const { images } = useSelector((state) => state.imageMngtReducer);
+  useEffect(() => {
+    dispatch(fetchImages());
+  }, []);
   return (
     <AdminLayout>
       <div className="px-24 py-12 text-gray-700 dark:text-gray-500 transition duration-500 ease-in-out">
@@ -49,7 +58,6 @@ const SiteManagement = () => {
                 <div
                   className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block"
                   style={{ height: "24em" }}
-                  href="./blog.html"
                 >
                   <div
                     className="absolute left-0 bottom-0 w-full h-full z-10"
@@ -57,10 +65,19 @@ const SiteManagement = () => {
                       backgroundImage:
                         "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
                     }}
-                  ></div>
-                  <button className="absolute right-0 top-0 bg-opacity-50 bg-orange-400 text-white hover:bg-orange-500 px-2 py-3 z-20 focus:outline-none transition-all duration-300 ease-in-out">
+                  >
+                    <FormModal icon={"fa-2x far fa-edit"}>
+                      <FormModal.Header>this is header</FormModal.Header>
+                      <FormModal.Body>This is a body</FormModal.Body>
+                    </FormModal>
+                  </div>
+
+                  {/* <button
+                    className="absolute right-0 top-0 bg-orange-500 text-white hover:bg-orange-700 px-2 py-3 z-20 focus:outline-none"
+                  >
                     <i className="fa-2x far fa-edit"></i>
-                  </button>
+                  </button> */}
+
                   <img
                     src={`uploads/ball_1600510261991.png`}
                     className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
@@ -75,10 +92,9 @@ const SiteManagement = () => {
                   </div>
                 </div>
 
-                <a
+                <div
                   className="w-full md:w-1/3 relative rounded"
                   style={{ height: "24em" }}
-                  href="./blog.html"
                 >
                   <div
                     className="absolute left-0 top-0 w-full h-full z-10"
@@ -86,7 +102,12 @@ const SiteManagement = () => {
                       backgroundImage:
                         "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
                     }}
-                  ></div>
+                  >
+                    <FormModal icon={"fa-2x far fa-edit"}>
+                      <FormModal.Header>this is header</FormModal.Header>
+                      <FormModal.Body>This is a body</FormModal.Body>
+                    </FormModal>
+                  </div>
                   <img
                     src={`uploads/catalyst_1600425522427.png`}
                     className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
@@ -99,7 +120,7 @@ const SiteManagement = () => {
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </h2>
                   </div>
-                </a>
+                </div>
               </div>
 
               <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
@@ -112,8 +133,7 @@ const SiteManagement = () => {
                     <div
                       className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
                       style={{
-                        backgroundImage:
-                          "url(uploads/catalyst_1600425522427.png)",
+                        backgroundImage: "url('catalyst.png')",
                       }}
                       title="deit is very important"
                     ></div>
@@ -126,10 +146,35 @@ const SiteManagement = () => {
                         <p className="text-gray-700 text-base">
                           Duis euismod est quis lacus elementum, eu laoreet
                           dolor consectetur. Pellentesque sed neque vel tellus
+                          lacinia elementum. Proin consequat ullamcorper
+                          eleifend.
                         </p>
                       </div>
                     </div>
                   </a>
+
+                  <div className="rounded w-full lg:flex mb-10">
+                    <div
+                      className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
+                      style={{
+                        backgroundImage: "url('catalyst.png')",
+                      }}
+                      title="deit is very important"
+                    ></div>
+                    <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
+                      <div>
+                        <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
+                          Integer commodo, sapien ut vulputate viverra
+                        </div>
+                        <p className="text-gray-700 text-base">
+                          Nam malesuada aliquet metus, ac commodo augue mollis
+                          sit amet. Nam bibendum risus sit amet metus semper
+                          consectetur. Proin consequat ullamcorper eleifend. Nam
+                          bibendum risus sit amet metus semper consectetur.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* <!-- right sidebar --> */}
@@ -220,6 +265,50 @@ const SiteManagement = () => {
                 </div>
               </div>
             </main>
+            <section className="text-gray-700 body-font">
+              <div className="container px-5 py-24 mx-auto">
+                <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 -m-4 mt-4">
+                  {images.map((image) => (
+                    <div
+                      key={image._id}
+                      className="w-full mx-1 my-1 border-2 border-solid border-red-200 rounded-t-lg bg-gray-100 shadow-lg cursor-pointer relative"
+                    >
+                      <FormModal icon={"far fa-edit"}>
+                        <FormModal.Header>this is header</FormModal.Header>
+                        <FormModal.Body>
+                          <select>
+                            {images.map((img) => (
+                              <option
+                                key={img._id}
+                                selected={image._id === img._id}
+                              >
+                                {img.original_name}
+                              </option>
+                            ))}
+                          </select>
+                        </FormModal.Body>
+                      </FormModal>
+                      <a className="block relative h-48 rounded overflow-hidden">
+                        <img
+                          alt="catalyst"
+                          className="object-cover object-center w-full h-full block transform hover:scale-110 transition-all duration-300"
+                          src={image.file_path}
+                        />
+                      </a>
+                      <div className="mt-4 px-2 py-2">
+                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                          StrayRacha
+                        </h3>
+                        <h2 className="text-gray-900 title-font text-lg font-medium">
+                          The Catalyzer
+                        </h2>
+                        <p className="mt-1">$16.00</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
