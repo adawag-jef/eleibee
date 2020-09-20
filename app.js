@@ -36,6 +36,7 @@ mongoose.connect(
 
 app.use("/api/user", require("./routes/User"));
 app.use("/api/image", require("./routes/FileUpload"));
+app.use("/api/card-collections", require("./routes/CardCollection"));
 
 if (process.env.NODE_ENV === "production") {
   app.get("*", (req, res) => {
