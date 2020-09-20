@@ -3,12 +3,11 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { logout } from "../store/actions/authActions";
 
-const AdminPage = ({ children }) => {
+const AdminLayout = ({ children }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const handleLogout = (e) => {
     dispatch(logout(history));
-    // history.push("/login");
   };
 
   return (
@@ -188,4 +187,4 @@ const AdminPage = ({ children }) => {
   );
 };
 
-export default AdminPage;
+export default AdminLayout;

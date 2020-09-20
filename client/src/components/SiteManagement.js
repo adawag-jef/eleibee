@@ -1,8 +1,9 @@
 import React from "react";
+import AdminLayout from "../containers/AdminLayout";
 
 const SiteManagement = () => {
   return (
-    <>
+    <AdminLayout>
       <div className="px-24 py-12 text-gray-700 dark:text-gray-500 transition duration-500 ease-in-out">
         <h2 className="text-4xl font-medium capitalize">Site Management</h2>
         <div className="mt-1 mb-4 flex items-center justify-between">
@@ -222,7 +223,7 @@ const SiteManagement = () => {
           </div>
         </div>
       </div>
-    </>
+    </AdminLayout>
   );
 };
 

@@ -45,29 +45,26 @@ function App() {
           component={Register}
         /> */}
 
-        <PrivateRoute path="/dashboard" auth={auth}>
-          <AdminLayout>
-            <Dashboard />
-          </AdminLayout>
-        </PrivateRoute>
+        <PrivateRoute path="/dashboard" auth={auth} component={Dashboard} />
 
-        <PrivateRoute path="/transactions" auth={auth}>
-          <AdminLayout>
-            <Transactions />
-          </AdminLayout>
-        </PrivateRoute>
+        <PrivateRoute
+          path="/transactions"
+          auth={auth}
+          component={Transactions}
+        />
 
-        <PrivateRoute path="/site-management" auth={auth}>
-          <AdminLayout>
-            <SiteManagement />
-          </AdminLayout>
-        </PrivateRoute>
+        <PrivateRoute
+          path="/site-management"
+          auth={auth}
+          component={SiteManagement}
+        />
 
-        <PrivateRoute path="/image-management" auth={auth}>
-          <AdminLayout>
-            <ImageManagement />
-          </AdminLayout>
-        </PrivateRoute>
+        <PrivateRoute
+          path="/image-management"
+          auth={auth}
+          component={ImageManagement}
+        />
+
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

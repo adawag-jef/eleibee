@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Toast from "./Toast";
+import AdminLayout from "../containers/AdminLayout";
 
 import {
   fetchImages,
@@ -60,7 +61,7 @@ const FileUpload = () => {
     dispatch(uploadImage(file, success, fail));
   };
   return (
-    <>
+    <AdminLayout>
       <div className="px-24 py-12 text-gray-700 dark:text-gray-500 transition duration-500 ease-in-out">
         <h2 className="text-4xl font-medium capitalize">Image Management</h2>
         <div className="mt-1 mb-4 flex items-center justify-between">
@@ -370,7 +371,7 @@ const FileUpload = () => {
         type={message.type}
         onCloseRequest={() => setShowToast(false)}
       />
-    </>
+    </AdminLayout>
   );
 };
 
