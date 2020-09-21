@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { fetchCollection } from "../store/actions/collecitonAction";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { collections } = useSelector((state) => state.collectionReducer);
+  useEffect(() => {
+    dispatch(fetchCollection());
+  }, []);
   return (
     <>
       {/* <!-- component --> */}
@@ -15,63 +23,55 @@ const Home = () => {
           </a>
           <ul className="inline-flex items-center">
             <li className="px-2 md:px-4">
-              <a
-                href=""
+              <Link
+                to="/"
                 className="text-purple-600 font-semibold hover:text-purple-500"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li className="px-2 md:px-4">
-              <a
-                href=""
+              <Link
+                to="/about"
                 className="text-gray-500 font-semibold hover:text-purple-500"
               >
                 About
-              </a>
+              </Link>
             </li>
+
             <li className="px-2 md:px-4">
-              <a
-                href=""
-                className="text-gray-500 font-semibold hover:text-purple-500"
-              >
-                Press
-              </a>
-            </li>
-            <li className="px-2 md:px-4">
-              <a
-                href=""
+              <Link
+                to="/contact"
                 className="text-gray-500 font-semibold hover:text-purple-500"
               >
                 Contact
-              </a>
+              </Link>
             </li>
             <li className="px-2 md:px-4 hidden md:block">
-              <a
-                href=""
+              <Link
+                to="login"
                 className="text-gray-500 font-semibold hover:text-purple-500"
               >
                 Login
-              </a>
+              </Link>
             </li>
-            <li className="px-2 md:px-4 hidden md:block">
+            {/* <li className="px-2 md:px-4 hidden md:block">
               <a
                 href=""
                 className="text-gray-500 font-semibold hover:text-purple-500"
               >
                 Register
               </a>
-            </li>
+            </li> */}
           </ul>
         </header>
         {/* <!-- header ends here --> */}
 
         <main className="mt-10">
           <div className="block md:flex md:space-x-2 px-2 lg:p-0">
-            <a
+            <div
               className="mb-4 md:mb-0 w-full md:w-2/3 relative rounded inline-block"
               style={{ height: "24em" }}
-              href="./blog.html"
             >
               <div
                 className="absolute left-0 bottom-0 w-full h-full z-10"
@@ -80,39 +80,30 @@ const Home = () => {
                     "linear-gradient(180deg,transparent,rgba(0,0,0,.7))",
                 }}
               ></div>
+
+              {/* <button
+                    className="absolute right-0 top-0 bg-orange-500 text-white hover:bg-orange-700 px-2 py-3 z-20 focus:outline-none"
+                  >
+                    <i className="fa-2x far fa-edit"></i>
+                  </button> */}
+
               <img
-                src="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+                src={`uploads/ball_1600510261991.png`}
                 className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
               />
               <div className="p-4 absolute bottom-0 left-0 z-20">
                 <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
-                  Nutrition
+                  Featured
                 </span>
                 <h2 className="text-4xl font-semibold text-gray-100 leading-tight">
-                  Pellentesque a consectetur velit, ac molestie ipsum. Donec
-                  sodales, massa et auctor.
+                  Pellentesque a consectetur velit, ac molestie ipsum.
                 </h2>
-                <div className="flex mt-3">
-                  <img
-                    src="https://randomuser.me/api/portraits/men/97.jpg"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-200 text-sm">
-                      Mike Sullivan
-                    </p>
-                    <p className="font-semibold text-gray-400 text-xs">
-                      14 Aug
-                    </p>
-                  </div>
-                </div>
               </div>
-            </a>
+            </div>
 
-            <a
+            <div
               className="w-full md:w-1/3 relative rounded"
               style={{ height: "24em" }}
-              href="./blog.html"
             >
               <div
                 className="absolute left-0 top-0 w-full h-full z-10"
@@ -122,32 +113,18 @@ const Home = () => {
                 }}
               ></div>
               <img
-                src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1301&q=80"
+                src={`uploads/catalyst_1600425522427.png`}
                 className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
               />
               <div className="p-4 absolute bottom-0 left-0 z-20">
                 <span className="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2">
-                  Science
+                  Top Seller
                 </span>
                 <h2 className="text-3xl font-semibold text-gray-100 leading-tight">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </h2>
-                <div className="flex mt-3">
-                  <img
-                    src="https://images-na.ssl-images-amazon.com/images/M/MV5BODFjZTkwMjItYzRhMS00OWYxLWI3YTUtNWIzOWQ4Yjg4NGZiXkEyXkFqcGdeQXVyMTQ0ODAxNzE@._V1_UX172_CR0,0,172,256_AL_.jpg"
-                    className="h-10 w-10 rounded-full mr-2 object-cover"
-                  />
-                  <div>
-                    <p className="font-semibold text-gray-200 text-sm">
-                      Chrishell Staus
-                    </p>
-                    <p className="font-semibold text-gray-400 text-xs">
-                      15 Aug
-                    </p>
-                  </div>
-                </div>
               </div>
-            </a>
+            </div>
           </div>
 
           <div className="block lg:flex lg:space-x-2 px-2 lg:p-0 mt-10 mb-10">
@@ -160,8 +137,7 @@ const Home = () => {
                 <div
                   className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
                   style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                    backgroundImage: "url('catalyst.png')",
                   }}
                   title="deit is very important"
                 ></div>
@@ -177,18 +153,6 @@ const Home = () => {
                       elementum. Proin consequat ullamcorper eleifend.
                     </p>
                   </div>
-                  <div className="flex mt-3">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/86.jpg"
-                      className="h-10 w-10 rounded-full mr-2 object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-700 text-sm capitalize">
-                        eduard franz
-                      </p>
-                      <p className="text-gray-600 text-xs"> 14 Aug </p>
-                    </div>
-                  </div>
                 </div>
               </a>
 
@@ -196,8 +160,7 @@ const Home = () => {
                 <div
                   className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
                   style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
+                    backgroundImage: "url('catalyst.png')",
                   }}
                   title="deit is very important"
                 ></div>
@@ -213,54 +176,6 @@ const Home = () => {
                       bibendum risus sit amet metus semper consectetur.
                     </p>
                   </div>
-                  <div className="flex mt-3">
-                    <img
-                      src="https://randomuser.me/api/portraits/women/54.jpg"
-                      className="h-10 w-10 rounded-full mr-2 object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-700 text-sm capitalize">
-                        Serenity Hughes
-                      </p>
-                      <p className="text-gray-600 text-xs"> 14 Aug </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded w-full lg:flex mb-10">
-                <div
-                  className="h-48 lg:w-48 flex-none bg-cover text-center overflow-hidden opacity-75"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80')",
-                  }}
-                  title="deit is very important"
-                ></div>
-                <div className="bg-white rounded px-4 flex flex-col justify-between leading-normal">
-                  <div>
-                    <div className="mt-3 md:mt-0 text-gray-700 font-bold text-2xl mb-2">
-                      Suspendisse varius justo eu risus laoreet fermentum non
-                      aliquam dolor
-                    </div>
-                    <p className="text-gray-700 text-base">
-                      Mauris porttitor, velit at tempus vulputate, odio turpis
-                      facilisis dui, vitae eleifend odio ipsum at odio.
-                      Phasellus luctus scelerisque felis eget suscipit.
-                    </p>
-                  </div>
-                  <div className="flex mt-3">
-                    <img
-                      src="https://randomuser.me/api/portraits/men/86.jpg"
-                      className="h-10 w-10 rounded-full mr-2 object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-gray-700 text-sm capitalize">
-                        eduard franz
-                      </p>
-                      <p className="text-gray-600 text-xs"> 14 Aug </p>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -270,7 +185,7 @@ const Home = () => {
               {/* <!-- topics --> */}
               <div className="mb-4">
                 <h5 className="font-bold text-lg uppercase text-gray-700 px-1 mb-2">
-                  Popular Topics
+                  New Cards
                 </h5>
                 <ul>
                   <li className="px-1 py-4 border-b border-t border-white hover:border-gray-200 transition duration-300">
@@ -279,8 +194,8 @@ const Home = () => {
                       className="flex items-center text-gray-600 cursor-pointer"
                     >
                       <span className="inline-block h-4 w-4 bg-green-300 mr-3"></span>
-                      Nutrition
-                      <span className="text-gray-500 ml-auto">23 articles</span>
+                      Card 1
+                      <span className="text-gray-500 ml-auto">2 pieces</span>
                       <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
                     </a>
                   </li>
@@ -290,8 +205,8 @@ const Home = () => {
                       className="flex items-center text-gray-600 cursor-pointer"
                     >
                       <span className="inline-block h-4 w-4 bg-indigo-300 mr-3"></span>
-                      Food & Diet
-                      <span className="text-gray-500 ml-auto">18 articles</span>
+                      Card 2
+                      <span className="text-gray-500 ml-auto">3 pieces</span>
                       <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
                     </a>
                   </li>
@@ -301,8 +216,8 @@ const Home = () => {
                       className="flex items-center text-gray-600 cursor-pointer"
                     >
                       <span className="inline-block h-4 w-4 bg-yellow-300 mr-3"></span>
-                      Workouts
-                      <span className="text-gray-500 ml-auto">34 articles</span>
+                      Card 3
+                      <span className="text-gray-500 ml-auto">2 pieces</span>
                       <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
                     </a>
                   </li>
@@ -312,14 +227,13 @@ const Home = () => {
                       className="flex items-center text-gray-600 cursor-pointer"
                     >
                       <span className="inline-block h-4 w-4 bg-blue-300 mr-3"></span>
-                      Immunity
-                      <span className="text-gray-500 ml-auto">9 articles</span>
+                      Card 4
+                      <span className="text-gray-500 ml-auto">5 pieces</span>
                       <i className="text-gray-500 bx bx-right-arrow-alt ml-1"></i>
                     </a>
                   </li>
                 </ul>
               </div>
-
               {/* <!-- divider --> */}
               <div className="border border-dotted"></div>
 
@@ -347,6 +261,69 @@ const Home = () => {
           </div>
         </main>
         {/* <!-- main ends here --> */}
+
+        {/* collection */}
+        <section className="text-gray-700 body-font">
+          <div className="container px-5 py-24 mx-auto">
+            <h2 className="font-semibold text-2xl">Collections</h2>
+            {!collections.length && (
+              <div className="alert mt-3 flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
+                <div className="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                  <span className="text-red-500">
+                    <svg
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      className="h-6 w-6"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </div>
+                <div className="alert-content ml-4">
+                  <div className="alert-title font-semibold text-lg text-red-800">
+                    Ooppss.
+                  </div>
+                  <div className="alert-description text-sm text-red-600">
+                    Seems like you don't have any collections yet, please add
+                    one 😊
+                  </div>
+                </div>
+              </div>
+            )}
+            <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 -m-4 mt-4">
+              {collections.map((item) => (
+                <div
+                  key={item._id}
+                  className="w-full mx-1 my-1 border-2 border-solid border-red-200 rounded-t-lg bg-gray-100 shadow-lg cursor-pointer relative"
+                >
+                  <a className="block relative h-48 rounded overflow-hidden">
+                    <img
+                      alt="catalyst"
+                      className="object-cover object-center w-full h-full block transform hover:scale-110 transition-all duration-300"
+                      src={item.image.file_path}
+                    />
+                  </a>
+                  <div className="mt-4 px-2 py-2">
+                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 text-center">
+                      {item.created_by.username}
+                    </h3>
+                    <h2 className="text-gray-900 title-font text-lg font-medium text-center">
+                      {item.image.original_name}
+                    </h2>
+                    <p className="mt-1 font-semibold text-center">
+                      {item.price} php
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+        {/* collection end */}
 
         {/* <!-- footer --> */}
         <footer className="border-t mt-32 pt-12 pb-32 px-4 lg:px-0">
