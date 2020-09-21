@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCollection } from "../store/actions/collecitonAction";
+import ImageModal from "./ImageModal";
 
 const Home = () => {
   const dispatch = useDispatch();
   const { collections } = useSelector((state) => state.collectionReducer);
+  const [imageModal, setImageModal] = useState(false);
   useEffect(() => {
     dispatch(fetchCollection());
   }, []);
@@ -300,13 +302,13 @@ const Home = () => {
                   key={item._id}
                   className="w-full mx-1 my-1 border-2 border-solid border-red-200 rounded-t-lg bg-gray-100 shadow-lg cursor-pointer relative"
                 >
-                  <a className="block relative h-48 rounded overflow-hidden">
+                  <ImageModal file_path={item.image.file_path}>
                     <img
                       alt="catalyst"
                       className="object-cover object-center w-full h-full block transform hover:scale-110 transition-all duration-300"
                       src={item.image.file_path}
                     />
-                  </a>
+                  </ImageModal>
                   <div className="mt-4 px-2 py-2">
                     {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 text-center">
                       {item.created_by.username}
