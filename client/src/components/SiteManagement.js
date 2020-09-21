@@ -1,16 +1,109 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Select from "react-select";
 import AdminLayout from "../containers/AdminLayout";
 import FormModal from "./FormModal";
+import Toast from "./Toast";
 
 import { fetchImages } from "../store/actions/imageMngtAction";
+import {
+  fetchCollection,
+  postCollection,
+  removeCollection,
+  editCollection,
+  updateCollection,
+} from "../store/actions/collecitonAction";
+import AddCollectionModal from "./AddCollectionModal";
 
-const SiteManagement = () => {
+const SiteManagement = ({ history }) => {
   const dispatch = useDispatch();
   const { images } = useSelector((state) => state.imageMngtReducer);
+  const { collections, currentCollection } = useSelector(
+    (state) => state.collectionReducer
+  );
+
+  const options = images.map((img) => ({
+    value: img,
+    label: img.original_name,
+  }));
+
+  const [newCollection, setNewCollection] = useState({ image_id: "" });
+  const [price, setPrice] = useState(0);
+  const [message, setMessage] = useState({ msg: "", type: "" });
+  const [showToast, setShowToast] = useState(false);
+
   useEffect(() => {
     dispatch(fetchImages());
+    dispatch(fetchCollection());
   }, []);
+
+  const submitCollection = () => {
+    console.log("submitting", newCollection);
+    const body = { image_id: newCollection.image_id, price: price };
+    dispatch(
+      postCollection(
+        body,
+        (res) => {
+          console.log(res.message.msgBody);
+          setMessage({
+            msg: res.message.msgBody,
+            type: "success",
+          });
+          setShowToast(true);
+          setNewCollection({ image_id: "" });
+          setPrice(0);
+        },
+        (err) => {
+          console.log(err.response.data.message.msgBody);
+          setMessage({
+            msg: err.response.data.message.msgBody,
+            type: "danger",
+          });
+          setShowToast(true);
+        }
+      )
+    );
+  };
+
+  const deleteCollection = (id) => {
+    const success = (res) => {
+      console.log(res);
+      setMessage({
+        msg: res.message.msgBody,
+        type: "success",
+      });
+      setShowToast(true);
+    };
+    const fail = (err) => {
+      console.log(err);
+      setMessage({
+        msg: err.response.data.message.msgBody,
+        type: "danger",
+      });
+      setShowToast(true);
+    };
+    dispatch(removeCollection(id, success, fail));
+  };
+
+  const updateCurrentCollection = () => {
+    const success = (res) => {
+      console.log(res);
+      setMessage({
+        msg: res.message.msgBody,
+        type: "success",
+      });
+      setShowToast(true);
+    };
+    const fail = (err) => {
+      console.log(err);
+      setMessage({
+        msg: err.response.data.message.msgBody,
+        type: "danger",
+      });
+      setShowToast(true);
+    };
+    dispatch(updateCollection(currentCollection, success, fail));
+  };
   return (
     <AdminLayout>
       <div className="px-24 py-12 text-gray-700 dark:text-gray-500 transition duration-500 ease-in-out">
@@ -267,42 +360,119 @@ const SiteManagement = () => {
             </main>
             <section className="text-gray-700 body-font">
               <div className="container px-5 py-24 mx-auto">
+                <AddCollectionModal submit={submitCollection}>
+                  <AddCollectionModal.Header>
+                    Add Collection
+                  </AddCollectionModal.Header>
+                  <AddCollectionModal.Body>
+                    <Select
+                      value={newCollection.value}
+                      onChange={(e) => {
+                        setNewCollection({
+                          ...newCollection,
+                          image_id: e.value._id,
+                        });
+                      }}
+                      options={options}
+                    />
+                    <input
+                      type="number"
+                      value={price}
+                      onChange={(e) => setPrice(e.target.value)}
+                    />
+                  </AddCollectionModal.Body>
+                </AddCollectionModal>
+                {!collections.length && (
+                  <div className="alert mt-3 flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
+                    <div className="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                      <span className="text-red-500">
+                        <svg
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                          className="h-6 w-6"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          ></path>
+                        </svg>
+                      </span>
+                    </div>
+                    <div className="alert-content ml-4">
+                      <div className="alert-title font-semibold text-lg text-red-800">
+                        Ooppss.
+                      </div>
+                      <div className="alert-description text-sm text-red-600">
+                        Seems like you don't have any collections yet, please
+                        add one 😊
+                      </div>
+                    </div>
+                  </div>
+                )}
                 <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 -m-4 mt-4">
-                  {images.map((image) => (
+                  {collections.map((item) => (
                     <div
-                      key={image._id}
+                      key={item._id}
                       className="w-full mx-1 my-1 border-2 border-solid border-red-200 rounded-t-lg bg-gray-100 shadow-lg cursor-pointer relative"
                     >
-                      <FormModal icon={"far fa-edit"}>
+                      <FormModal
+                        icon={"far fa-edit"}
+                        editCollection={editCollection}
+                        collection={item}
+                        submit={updateCurrentCollection}
+                      >
                         <FormModal.Header>this is header</FormModal.Header>
                         <FormModal.Body>
-                          <select>
-                            {images.map((img) => (
-                              <option
-                                key={img._id}
-                                selected={image._id === img._id}
-                              >
-                                {img.original_name}
-                              </option>
-                            ))}
-                          </select>
+                          <Select
+                            value={currentCollection.value}
+                            onChange={(e) => {
+                              dispatch(
+                                editCollection({
+                                  ...currentCollection,
+                                  image: e.value,
+                                })
+                              );
+                            }}
+                            options={options}
+                          />
+                          <input
+                            type="number"
+                            value={currentCollection.price}
+                            onChange={(e) =>
+                              dispatch(
+                                editCollection({
+                                  ...currentCollection,
+                                  price: e.target.value,
+                                })
+                              )
+                            }
+                          />
                         </FormModal.Body>
                       </FormModal>
+                      <button
+                        onClick={() => deleteCollection(item._id)}
+                        className="absolute top-0 right-0 px-3 py-2 bg-red-600 z-20"
+                      >
+                        <i className="text-white fas fa-trash"></i>
+                      </button>
                       <a className="block relative h-48 rounded overflow-hidden">
                         <img
                           alt="catalyst"
                           className="object-cover object-center w-full h-full block transform hover:scale-110 transition-all duration-300"
-                          src={image.file_path}
+                          src={item.image.file_path}
                         />
                       </a>
                       <div className="mt-4 px-2 py-2">
-                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                          StrayRacha
+                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 text-center">
+                          {item.created_by.username}
                         </h3>
-                        <h2 className="text-gray-900 title-font text-lg font-medium">
-                          The Catalyzer
+                        <h2 className="text-gray-900 title-font text-lg font-medium text-center">
+                          {item.image.original_name}
                         </h2>
-                        <p className="mt-1">$16.00</p>
+                        <p className="mt-1 font-semibold text-center">
+                          {item.price} php
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -312,6 +482,12 @@ const SiteManagement = () => {
           </div>
         </div>
       </div>
+      <Toast
+        showToast={showToast}
+        message={message.msg}
+        type={message.type}
+        onCloseRequest={() => setShowToast(false)}
+      />
     </AdminLayout>
   );
 };
