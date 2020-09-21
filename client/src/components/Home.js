@@ -308,9 +308,9 @@ const Home = () => {
                     />
                   </a>
                   <div className="mt-4 px-2 py-2">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 text-center">
+                    {/* <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1 text-center">
                       {item.created_by.username}
-                    </h3>
+                    </h3> */}
                     <h2 className="text-gray-900 title-font text-lg font-medium text-center">
                       {item.image.original_name}
                     </h2>
