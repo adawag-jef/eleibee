@@ -50,7 +50,7 @@ router.post(
       process.env.UPLOAD_DIR,
       fileName
     );
-    const filePath = `/uploads/${fileName}`;
+    const filePath = `uploads/${fileName}`;
 
     sampleFile.mv(fileStoragePath, function (err) {
       if (err) return res.status(500).send(err);
