@@ -21,6 +21,7 @@ app.use(
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
+  app.use("/uploads", express.static("client/uploads"));
 }
 app.use("/uploads", express.static("client/uploads"));
 mongoose.connect(
