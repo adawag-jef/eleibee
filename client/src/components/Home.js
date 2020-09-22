@@ -78,7 +78,6 @@ const Home = () => {
           </ul>
         </header>
         {/* <!-- header ends here --> */}
-
         <main className="mt-10">
           <div className="block md:flex md:space-x-2 px-2 lg:p-0">
             <div
