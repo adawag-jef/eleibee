@@ -99,7 +99,7 @@ const Home = () => {
                   </button> */}
 
               <img
-                src={`uploads/ball_1600510261991.png`}
+                src={`uploads/catalyst_1600743397429.png`}
                 className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
               />
               <div className="p-4 absolute bottom-0 left-0 z-20">
@@ -124,7 +124,7 @@ const Home = () => {
                 }}
               ></div>
               <img
-                src={`uploads/catalyst_1600425522427.png`}
+                src={`uploads/catalyst_1600743397429.png`}
                 className="absolute left-0 top-0 w-full h-full rounded z-0 object-cover"
               />
               <div className="p-4 absolute bottom-0 left-0 z-20">
