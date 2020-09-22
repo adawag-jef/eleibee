@@ -13,9 +13,14 @@ import {
   editCollection,
   updateCollection,
 } from "../store/actions/collecitonAction";
-import AddCollectionModal from "./AddCollectionModal";
+// import AddCollectionModal from "./AddCollectionModal";
+import Modal from "react-modal";
+Modal.setAppElement("#modal-root");
 
 const SiteManagement = ({ history }) => {
+  const [isAddCollectionModalOpen, setIsAddCollectionModalOpen] = useState(
+    false
+  );
   const dispatch = useDispatch();
   const { images } = useSelector((state) => state.imageMngtReducer);
   const { collections, currentCollection } = useSelector(
@@ -37,7 +42,8 @@ const SiteManagement = ({ history }) => {
     dispatch(fetchCollection());
   }, []);
 
-  const submitCollection = () => {
+  const submitCollection = (e) => {
+    e.preventDefault();
     console.log("submitting", newCollection);
     const body = { image_id: newCollection.image_id, price: price };
     dispatch(
@@ -360,28 +366,53 @@ const SiteManagement = ({ history }) => {
             </main>
             <section className="text-gray-700 body-font">
               <div className="container px-5 py-24 mx-auto">
-                <AddCollectionModal submit={submitCollection}>
+                <div className="flex">
+                  <button
+                    onClick={() => setIsAddCollectionModalOpen(true)}
+                    className=" flex items-center
+                      focus:outline-none border rounded-full
+                      py-2 px-6 leading-none border-blue-500
+                      dark:border-blue-600 select-none  bg-blue-400 text-white  hover:bg-white hover:text-blue-400
+                      dark-hover:text-gray-200 transition duration-300 ease-in-out"
+                  >
+                    <i className="far fa-plus-square mr-2"></i>
+                    Add Collection
+                  </button>
+                </div>
+                {/* <AddCollectionModal submit={submitCollection}>
                   <AddCollectionModal.Header>
                     Add Collection
                   </AddCollectionModal.Header>
                   <AddCollectionModal.Body>
-                    <Select
-                      value={newCollection.value}
-                      onChange={(e) => {
-                        setNewCollection({
-                          ...newCollection,
-                          image_id: e.value._id,
-                        });
-                      }}
-                      options={options}
-                    />
-                    <input
-                      type="number"
-                      value={price}
-                      onChange={(e) => setPrice(e.target.value)}
-                    />
+                    <div className="flex justify-between">
+                      <label htmlFor="select" className="mr-4">
+                        Image:
+                      </label>
+                      <Select
+                        className="flex-grow"
+                        value={newCollection.value}
+                        onChange={(e) => {
+                          setNewCollection({
+                            ...newCollection,
+                            image_id: e.value._id,
+                          });
+                        }}
+                        options={options}
+                      />
+                    </div>
+                    <div className="flex mt-2">
+                      <label htmlFor="" className="mr-8">
+                        Price
+                      </label>
+                      <input
+                        className="shadow-xs border border-gray-400 w-full h-10 px-3 py-2 text-blue-500 focus:outline-none focus:border-blue-700 focus:border-4 mb-3 rounded"
+                        type="number"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)}
+                      />
+                    </div>
                   </AddCollectionModal.Body>
-                </AddCollectionModal>
+                </AddCollectionModal> */}
                 {!collections.length && (
                   <div className="alert mt-3 flex flex-row items-center bg-red-200 p-5 rounded border-b-2 border-red-300">
                     <div className="alert-icon flex items-center bg-red-100 border-2 border-red-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
@@ -437,6 +468,7 @@ const SiteManagement = ({ history }) => {
                             options={options}
                           />
                           <input
+                            className="shadow-md border w-full h-10 px-3 py-2 text-blue-500 focus:outline-none focus:border-blue-500 mb-3 rounded"
                             type="number"
                             value={currentCollection.price}
                             onChange={(e) =>
@@ -488,6 +520,54 @@ const SiteManagement = ({ history }) => {
         type={message.type}
         onCloseRequest={() => setShowToast(false)}
       />
+      <Modal
+        isOpen={isAddCollectionModalOpen}
+        onRequestClose={() => setIsAddCollectionModalOpen(false)}
+        contentLabel="Image Modal"
+        className="Modal"
+        overlayClassName="Overlay"
+      >
+        <form onSubmit={submitCollection}>
+          <div className="flex justify-between">
+            <label htmlFor="select" className="mr-4">
+              Image:
+            </label>
+            <Select
+              className="flex-grow"
+              value={newCollection.value}
+              onChange={(e) => {
+                setNewCollection({
+                  ...newCollection,
+                  image_id: e.value._id,
+                });
+              }}
+              options={options}
+            />
+          </div>
+          <div className="flex mt-2">
+            <label htmlFor="" className="mr-8">
+              Price
+            </label>
+            <input
+              className="shadow-xs border border-gray-400 w-full h-10 px-3 py-2 text-blue-500 focus:outline-none focus:border-blue-700 focus:border-4 mb-3 rounded"
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div className="px-5 py-4 flex justify-end">
+            <button type="submit" className="px-3 py-2 bg-blue-400">
+              Submit
+            </button>
+            <button
+              className="px-3 py-2 bg-red-400"
+              onClick={() => setIsAddCollectionModalOpen(false)}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </Modal>
     </AdminLayout>
   );
 };

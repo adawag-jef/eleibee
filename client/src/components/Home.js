@@ -3,11 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { fetchCollection } from "../store/actions/collecitonAction";
 import Modal from "react-modal";
-import Transition from "./Transition";
 Modal.setAppElement("#modal-root");
 
 const Home = () => {
-  var subtitle;
   const dispatch = useDispatch();
   const { collections } = useSelector((state) => state.collectionReducer);
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -15,11 +13,6 @@ const Home = () => {
   function openModal(image) {
     setCurrentImage(image);
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
   }
 
   function closeModal() {
