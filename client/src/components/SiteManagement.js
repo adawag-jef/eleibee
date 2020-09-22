@@ -58,6 +58,7 @@ const SiteManagement = ({ history }) => {
           setShowToast(true);
           setNewCollection({ image_id: "" });
           setPrice(0);
+          setIsAddCollectionModalOpen(false);
         },
         (err) => {
           console.log(err.response.data.message.msgBody);
@@ -66,6 +67,7 @@ const SiteManagement = ({ history }) => {
             type: "danger",
           });
           setShowToast(true);
+          setIsAddCollectionModalOpen(false);
         }
       )
     );
